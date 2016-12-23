@@ -32,6 +32,106 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nequeo, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=a8d0fd4d65ef7906, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoBase.2016.26.1.1\lib\4.6\Nequeo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Collections, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=95250545e5d9f3b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoCollections.2016.26.1.1\lib\4.6\Nequeo.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.ComponentModel, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=5bff97510f36166b, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoComponentModel.2016.26.1.1\lib\4.6\Nequeo.ComponentModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Conversion, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=8a861d1811aa83ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoConversion.2016.26.1.1\lib\4.6\Nequeo.Conversion.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Cryptography, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=058191c6ae32205d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoCryptography.2016.26.1.1\lib\4.6\Nequeo.Cryptography.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Cryptography.Key, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=058191c6ae32205d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoCryptographyKey.2016.26.1.1\lib\4.6\Nequeo.Cryptography.Key.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Data, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=731a1445b7d27437, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoData.2016.26.1.1\lib\4.6\Nequeo.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Data.Linq, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=731a1445b7d27437, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoDataLinq.2016.26.1.1\lib\4.6\Nequeo.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Exceptions, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=1a6d786336d039df, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoExceptions.2016.26.1.1\lib\4.6\Nequeo.Exceptions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Handler, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=17ce537f814a362f, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoHandler.2016.26.1.1\lib\4.6\Nequeo.Handler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.IO.Compress, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=43b018473d802851, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoIOCompress.2016.26.1.2\lib\4.6\Nequeo.IO.Compress.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.IO.Stream, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=43b018473d802851, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoIOStream.2016.26.1.1\lib\4.6\Nequeo.IO.Stream.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Linq, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=ae2c2e9900db869f, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoLinq.2016.26.1.1\lib\4.6\Nequeo.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Management.NetTcp, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=96173915d261ebae, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoNetTcp.2016.26.1.1\lib\4.6\Nequeo.Management.NetTcp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Model, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=577bba95b8d30372, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoModel.2016.26.1.1\lib\4.6\Nequeo.Model.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Net, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=24770b6a676fdab1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoNet.2016.26.1.1\lib\4.6\Nequeo.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Net.ServiceModel, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=24770b6a676fdab1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoNetServiceModel.2016.26.1.1\lib\4.6\Nequeo.Net.ServiceModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Primitive, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=605226a0b789a2b2, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoPrimitive.2016.26.1.1\lib\4.6\Nequeo.Primitive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Reflection, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=3b355968680c6ed8, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoReflection.2016.26.1.1\lib\4.6\Nequeo.Reflection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Resource, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=4aecdc1ac3c9a042, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoResource.2016.26.1.1\lib\4.6\Nequeo.Resource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Security, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=2d222aa2794dadca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoSecurity.2016.26.1.1\lib\4.6\Nequeo.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Serialisation, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=60e6b5624b241280, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoSerialisation.2016.26.1.1\lib\4.6\Nequeo.Serialisation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Threading, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=d8c99fcd48433f43, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoThreading.2016.26.1.1\lib\4.6\Nequeo.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nequeo.Xml, Version=2016.26.1.1, Culture=neutral, PublicKeyToken=5cc23bf5f7fba567, processorArchitecture=MSIL">
+      <HintPath>..\packages\NequeoXml.2016.26.1.1\lib\4.6\Nequeo.Xml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -98,6 +198,7 @@
     <Compile Include="App_Packages\Simple.Owin.Servers.TcpServer.0.10.0\TcpSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
