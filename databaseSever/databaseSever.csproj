@@ -142,67 +142,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\DictionaryExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\Disposable.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\HeaderExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\IFluentApi.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\MemoryStreamExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\ReflectionExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\StreamExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\StreamExtensions.F45.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\TaskExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\TaskHelper.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Helpers\UrlHelper.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpHeaderKeys.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpHeaderLine.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpHeaders.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\HttpRequestLine.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IContext.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IFormData.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IHttpHeaders.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IPostedFile.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IRequest.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IRequestHeaders.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IResponse.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\IResponseHeaders.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinContext.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinFactory.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinKeys.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinRequest.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinRequestHeaders.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinResponse.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\OwinResponseHeaders.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\PathMapping.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\QueryString.cs" />
-    <Compile Include="App_Packages\Simple.Owin.0.10.0\Status.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\ControlComponent.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\ControlComponentExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\DelegateComponent.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\IPipeline.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\IPipelineBuilder.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\IPipelineComponent.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\Pipeline.cs" />
-    <Compile Include="App_Packages\Simple.Owin.AppPipeline.0.10.0\PipelineExtensions.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\IOwinHost.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\IOwinHostService.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\IOwinServer.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\OwinHost.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\OwinHostContext.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\OwinHostState.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\ConsoleOutput.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\MultiTextWriter.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\NullTextWriter.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Hosting.0.10.0\Trace\StringOutput.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Servers.TcpServer.0.10.0\SelfHost.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Servers.TcpServer.0.10.0\TcpServer.cs" />
-    <Compile Include="App_Packages\Simple.Owin.Servers.TcpServer.0.10.0\TcpSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
