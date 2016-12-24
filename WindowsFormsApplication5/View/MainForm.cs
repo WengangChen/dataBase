@@ -16,26 +16,30 @@ namespace WindowsFormsApplication5.View
     {
         SqlOperator sql = new SqlOperator();
         SqlDataAdapter dataAdapter;
+        BindingSource stuBindingSource = new BindingSource();
+        BindingSource couBindingSource = new BindingSource();
 
         public MainForm()
         {
             InitializeComponent();
+            courseTable.DataSource = couBindingSource;
+            studentTable.DataSource = stuBindingSource;
         }
 
-        private void GetStuData(string selectCommand)
+        private void GetData(DataGridView view, BindingSource binding, string selectCommand)
         {
             try
             {
                 dataAdapter = new SqlDataAdapter(selectCommand, sql.Connection);
-                
+
                 SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-                
+
                 DataTable table = new DataTable();
                 table.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 dataAdapter.Fill(table);
-                bindingSource1.DataSource = table;
-                
-                studentTable.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                binding.DataSource = table;
+
+                view.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (SqlException)
             {
@@ -62,20 +66,28 @@ namespace WindowsFormsApplication5.View
             Console.WriteLine(e.RowIndex);
         }
 
-        private void courseTable_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            e.Row.Cells[0].Value = "0000";
-            e.Row.Cells[1].Value = "unknown";
-            e.Row.Cells[2].Value = "fuck";
-            e.Row.Cells[3].Value = "0";
-            e.Row.Cells[4].Value = "1";
-            e.Row.Cells[5].Value = "100";
-        }
-
         private void serverToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            studentTable.DataSource = bindingSource1;
-            GetStuData("select * from 学生信息表");
+            ConfigForm win = new ConfigForm();
+            win.ShowDialog();
+            sql.Dispose();
+            sql = new SqlOperator();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GetData(courseTable, couBindingSource, "select * from 课程信息表");
+            GetData(studentTable, stuBindingSource, "select * from 学生信息表");
+        }
+
+        private void courseTable_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells[0].Value = 123;
+            e.Row.Cells[1].Value = "";
+            e.Row.Cells[2].Value = "";
+            e.Row.Cells[3].Value = 0.8;
+            e.Row.Cells[4].Value = true;
+            e.Row.Cells[5].Value = 1.5;
         }
     }
 }
