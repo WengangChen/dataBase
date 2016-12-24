@@ -109,7 +109,7 @@ namespace WindowsFormsApplication5.Helper
             }
         }
 
-        public void SetGrade(string studentID, int courseId, double pingshi, double qimo)
+        public void SetGrade(string studentID, int courseId, double pingshi, double qimo,string type)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace WindowsFormsApplication5.Helper
                     double z = result.GetFloat(0) + y;
                     x="update 学生信息表 set 学分 = "+Convert.ToString(z)+ " where 学号='" + studentID + "';";
                 }
-                x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b);
+                x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b,type);
                 p.CommandText = x;
                 p.Connection = Connection;
                 p.ExecuteNonQuery();

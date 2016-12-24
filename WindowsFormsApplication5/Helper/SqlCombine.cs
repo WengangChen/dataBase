@@ -32,12 +32,14 @@ namespace WindowsFormsApplication5.Helper
         {
             return $"insert into 选课成绩表(学号,课程号) values ('{studentId}',{courseId})";
         }
-        public static string ModefyGrade(string studentID, int courseId, double pingshichengji, double qimochengji, double b)
+        public static string ModefyGrade(string studentID, int courseId, double pingshichengji, double qimochengji, double b,string type)
         {
             return
                 $"update 选课成绩表 set 平时成绩 = {pingshichengji} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
                 $"update 选课成绩表 set 期末成绩 = {qimochengji} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
-                $"update 选课成绩表 set 总评 = {pingshichengji * (1 - b) + qimochengji * b} where(学号 = '{studentID}' and 课程号 = {courseId});\n";
+                $"update 选课成绩表 set 总评 = {pingshichengji * (1 - b) + qimochengji * b} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
+                $"update 选课成绩表 set 成绩类型 = '{type}' where(学号 = '{studentID}' and 课程号 = {courseId});";
+
         }
         public static string getBi(int courseId)
         {
@@ -75,6 +77,11 @@ namespace WindowsFormsApplication5.Helper
         {
             string x = "select 学号, 课程号, 总评 from 选课成绩表 where 成绩类型 = '重修'; ";
             return x;
+        }
+        //获取选该课的人
+        public static string getStudentNum(int courseNumber)
+        {
+            return $"select 学号,平时成绩,期末成绩,成绩类型 from 选课成绩表 where 课程号={courseNumber};";
         }
     }
 }
