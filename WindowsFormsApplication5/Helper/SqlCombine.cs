@@ -48,5 +48,33 @@ namespace WindowsFormsApplication5.Helper
             string x = "select 学号,姓名,班级 from 学生信息表 where 学号 not in(select 学号 from 选课成绩表 where 成绩类型 !='" + "正常'" + "or 总评<=" + Convert.ToString(85) + "); ";
             return x;
         }
+        //获取需要补考的名单
+        public static string getResitCourse(string studentId)
+        {
+            string x="select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
+            string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";
+            string z="select 学号, 课程号 from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=1);"+"\n";
+            return x + y + z;
+        }
+        //获取重修的名单
+        public static string getCantResitCourse(string studentId)
+        {
+            string x = "select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
+            string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";
+            string z = "select 学号, 课程号 from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=0);" + "\n";
+            return x + y + z;
+        }
+        //打印补考的成绩
+        public static string printResitGrade()
+        {
+            string x = "select 学号,课程号,总评 from 选课成绩表 where 成绩类型 = '补考'; ";
+            return x;
+        }
+        //打印重修的成绩
+        public static string printCantResitGrade()
+        {
+            string x = "select 学号, 课程号, 总评 from 选课成绩表 where 成绩类型 = '重修'; ";
+            return x;
+        }
     }
 }
