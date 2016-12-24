@@ -17,11 +17,13 @@ namespace WindowsFormsApplication5
         SqlOperator sql = new SqlOperator();
         SqlDataAdapter dataAdapter;
         BindingSource bs = new BindingSource();
+
         public 选课()
         {
             InitializeComponent();
             dataGridView1.DataSource = bs;
         }
+
         private void GetData(DataGridView view, BindingSource binding, string selectCommand)
         {
             try
@@ -41,6 +43,7 @@ namespace WindowsFormsApplication5
             {
             }
         }
+
         public void showData()
         {
             GetData(dataGridView1, bs, "select (学号,课程号) from 选课信息表");
@@ -54,7 +57,7 @@ namespace WindowsFormsApplication5
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             int r = e.RowIndex;
-            if(Convert.ToString(dataGridView1.Rows[r].Cells[0].Value)!=""&&Convert.ToString(dataGridView1.Rows[r].Cells[1].Value)!="")
+            if (Convert.ToString(dataGridView1.Rows[r].Cells[0].Value) != "" && Convert.ToString(dataGridView1.Rows[r].Cells[1].Value) != "")
             {
                 sql.studentChooseCourse(Convert.ToString(dataGridView1.Rows[r].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[r].Cells[1].Value));
             }
