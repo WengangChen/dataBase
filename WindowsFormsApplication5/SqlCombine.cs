@@ -17,7 +17,7 @@ namespace WindowsFormsApplication5
         }
         public static string removeStudent(string number)
         {
-            return "delete form 学生信息表 where (" +"学号='"+ number +"')";
+            return "delete from 学生信息表 where " +"学号 = '"+ number +"'";
         }
         public static string addCourse(int courseNumber,string name, string teacherName,double b,bool canResit=false)
         {
@@ -26,7 +26,7 @@ namespace WindowsFormsApplication5
         }
         public static string removeCourse(int courseNumber)
         {
-            return "delete form 学生信息表 where (课程号="+ Convert.ToString(courseNumber)+")";
+            return "delete from 学生信息表 where (课程号="+ Convert.ToString(courseNumber)+")";
         }
         public static string studentChooseCourse(string studentId,int courseId)
         {
