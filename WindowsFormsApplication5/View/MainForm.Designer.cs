@@ -101,6 +101,7 @@
             this.要重修的ToolStripMenuItem.Name = "要重修的ToolStripMenuItem";
             this.要重修的ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.要重修的ToolStripMenuItem.Text = "要重修的";
+            this.要重修的ToolStripMenuItem.Click += new System.EventHandler(this.要重修的ToolStripMenuItem_Click);
             // 
             // 评优的ToolStripMenuItem
             // 

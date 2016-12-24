@@ -51,7 +51,7 @@ namespace WindowsFormsApplication5.Helper
             return x;
         }
         //获取需要补考的名单
-        public static string getResitCourse(string studentId)
+        public static string getResitCourse()
         {
             string x="select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
             string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";
@@ -61,7 +61,7 @@ namespace WindowsFormsApplication5.Helper
             return x + y + z+xx+yy;
         }
         //获取重修的名单
-        public static string getCantResitCourse(string studentId)
+        public static string getCantResitCourse()
         {
             string x = "select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
             string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";

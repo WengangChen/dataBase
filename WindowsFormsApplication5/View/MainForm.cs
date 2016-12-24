@@ -147,7 +147,9 @@ namespace WindowsFormsApplication5.View
 
         private void 要补考的ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            要补考的 form1 = new 要补考的();
+            form1.Show();
+            form1.showData();
         }
 
         private void 评优的ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,6 +162,13 @@ namespace WindowsFormsApplication5.View
         private void 选课ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             选课 form1 = new 选课();
+            form1.Show();
+            form1.showData();
+        }
+
+        private void 要重修的ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            要重修的 form1 = new View.要重修的();
             form1.Show();
             form1.showData();
         }
