@@ -17,11 +17,13 @@ namespace WindowsFormsApplication5
         SqlOperator sql = new SqlOperator();
         SqlDataAdapter dataAdapter;
         BindingSource bs = new BindingSource();
+
         public 评优的()
         {
             InitializeComponent();
             dataGridView2.DataSource = bs;
         }
+
         private void GetData(DataGridView view, BindingSource binding, string selectCommand)
         {
             try
@@ -41,17 +43,20 @@ namespace WindowsFormsApplication5
             {
             }
         }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
         public void showData()
         {
             GetData(dataGridView2, bs, SqlCombine.getGreatStudent());
         }
+
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
     }
 }
