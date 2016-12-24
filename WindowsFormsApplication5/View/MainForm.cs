@@ -162,7 +162,6 @@ namespace WindowsFormsApplication5.View
             选课 form1 = new 选课();
             form1.Show();
             form1.showData();
-            
         }
     }
 }

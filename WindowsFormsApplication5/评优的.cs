@@ -39,8 +39,9 @@ namespace WindowsFormsApplication5
 
                 view.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
-            catch (SqlException es)
+            catch (SqlException e)
             {
+                MessageBox.Show(e.Message);
             }
         }
 
