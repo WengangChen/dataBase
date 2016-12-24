@@ -45,7 +45,7 @@ namespace WindowsFormsApplication5.Helper
         }
         public static string getGreatStudent()
         {
-            string x = "select (学号,姓名，班级) from 学生信息表 where 学号 not in(select 学号 from 选课成绩表 where 成绩类型 !='" + "普通" + "or 成绩<=" + Convert.ToString(85) + "); ";
+            string x = "select 学号,姓名,班级 from 学生信息表 where 学号 not in(select 学号 from 选课成绩表 where 成绩类型 !='" + "正常'" + "or 总评<=" + Convert.ToString(85) + "); ";
             return x;
         }
     }

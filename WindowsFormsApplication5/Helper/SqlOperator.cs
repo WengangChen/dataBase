@@ -122,12 +122,16 @@ namespace WindowsFormsApplication5.Helper
                 double b = result.GetDouble(0);
                 //课程的学分
                 double y = result.GetFloat(1);
-                string x = "select 总评 from 选课信息表 where (学号='" + studentID + "'and 课程号=" + Convert.ToString(courseId) + ");";
+                string x = "select 总评 from 选课成绩表 where (学号='" + studentID + "'and 课程号=" + Convert.ToString(courseId) + ");";
                 p.CommandText = x;
                 result = p.ExecuteReader();
                 if(result.GetFloat(0)<60&&pingshi*(1-b)+qimo*(b)>=60)
                 {
-                  
+                    x = "select 学分 from 学生信息表 where 学号='" + studentID + "';";
+                    p.CommandText = x;
+                    result = p.ExecuteReader();
+                    double z = result.GetFloat(0) + y;
+                    x="update 学生信息表 set 学分 = "+Convert.ToString(z)+ " where 学号='" + studentID + "';";
                 }
                 x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b);
                 p.CommandText = x;
