@@ -36,7 +36,7 @@ namespace WindowsFormsApplication5.Helper
         {
             return
                 $"update 选课成绩表 set 平时成绩 = {pingshichengji} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
-                $"update 选课成绩表 set 期末成绩 = {pingshichengji} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
+                $"update 选课成绩表 set 期末成绩 = {qimochengji} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
                 $"update 选课成绩表 set 总评 = {pingshichengji * (1 - b) + qimochengji * b} where(学号 = '{studentID}' and 课程号 = {courseId});\n";
         }
         public static string getBi(int courseId)
