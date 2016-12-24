@@ -19,7 +19,7 @@ namespace WindowsFormsApplication5.Helper
         {
             return $"delete form 学生信息表 where (学号='{number}')";
         }
-        public static string addCourse(int courseNumber, string name, string teacherName, double b, bool canResit,double xuefen)
+        public static string addCourse(int courseNumber, string name, string teacherName, double b, bool canResit, double xuefen)
         {
             return $"insert into 课程信息表 (课程号,课程名字,任课老师,期末成绩占总成绩比,允许补考,学分)" +
                 $" values({courseNumber},'{name}','{teacherName}',{b},{(canResit ? 1 : 0)},{xuefen})";
@@ -32,7 +32,7 @@ namespace WindowsFormsApplication5.Helper
         {
             return $"insert into 选课成绩表(学号,课程号) values ('{studentId}',{courseId})";
         }
-        public static string ModefyGrade(string studentID, int courseId, double pingshichengji, double qimochengji, double b,string type)
+        public static string ModifyGrade(string studentID, int courseId, double pingshichengji, double qimochengji, double b, string type)
         {
             return
                 $"update 选课成绩表 set 平时成绩 = {pingshichengji} where(学号 = '{studentID}' and 课程号 = {courseId});\n" +
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication5.Helper
         }
         public static string getBi(int courseId)
         {
-            return "select 期末成绩占总成绩比 from 课程信息表 where (课程号= " + Convert.ToString(courseId) + ")";
+            return "select 期末成绩占总成绩比,学分 from 课程信息表 where (课程号= " + Convert.ToString(courseId) + ")";
         }
         public static string getGreatStudent()
         {
@@ -53,12 +53,12 @@ namespace WindowsFormsApplication5.Helper
         //获取需要补考的名单
         public static string getResitCourse()
         {
-            string x="select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
+            string x = "select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
             string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";
-            string z="select 学号, 课程号 into #c from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=1);"+"\n";
+            string z = "select 学号, 课程号 into #c from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=1);" + "\n";
             string xx = "select #c.学号,学生信息表.姓名,#c.课程号 into #d from #c left join 学生信息表 on #c.学号=学生信息表.学号;\n";
-            string yy= "select #d.学号,#d.姓名,#d.课程号,课程信息表.课程名字 from #d left join 课程信息表 on #d.课程号=课程信息表.课程号;";
-            return x + y + z+xx+yy;
+            string yy = "select #d.学号,#d.姓名,#d.课程号,课程信息表.课程名字 from #d left join 课程信息表 on #d.课程号=课程信息表.课程号;";
+            return x + y + z + xx + yy;
         }
         //获取重修的名单
         public static string getCantResitCourse()
