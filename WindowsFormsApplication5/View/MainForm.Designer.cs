@@ -108,6 +108,7 @@
             this.courseTable.Name = "courseTable";
             this.courseTable.Size = new System.Drawing.Size(88, 240);
             this.courseTable.TabIndex = 0;
+            this.courseTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.courseTable_CellEndEdit);
             this.courseTable.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.courseTable_DefaultValuesNeeded);
             this.courseTable.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.courseTable_RowsAdded);
             this.courseTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.courseTable_RowsRemoved);
@@ -131,6 +132,8 @@
             this.studentTable.Name = "studentTable";
             this.studentTable.Size = new System.Drawing.Size(180, 240);
             this.studentTable.TabIndex = 0;
+            this.studentTable.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentTable_CellEndEdit);
+            this.studentTable.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.studentTable_DefaultValuesNeeded);
             this.studentTable.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.studentTable_RowsAdded);
             this.studentTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.studentTable_RowsRemoved);
             // 

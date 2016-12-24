@@ -79,15 +79,42 @@ namespace WindowsFormsApplication5.View
             GetData(courseTable, couBindingSource, "select * from 课程信息表");
             GetData(studentTable, stuBindingSource, "select * from 学生信息表");
         }
-
+        
         private void courseTable_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.Cells[0].Value = 123;
+            e.Row.Cells[0].Value = GetNextID();
             e.Row.Cells[1].Value = "";
             e.Row.Cells[2].Value = "";
             e.Row.Cells[3].Value = 0.8;
             e.Row.Cells[4].Value = true;
             e.Row.Cells[5].Value = 1.5;
+        }
+
+        private int GetNextID()
+        {
+            int max = -1;
+            foreach (DataGridViewRow item in courseTable.Rows)
+                max = Math.Max(max, (int)(item.Cells[0].Value ?? -1));
+            return max + 1;
+        }
+
+        private void studentTable_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells[0].Value = "3114000000";
+            e.Row.Cells[1].Value = "";
+            e.Row.Cells[2].Value = "";
+            e.Row.Cells[3].Value = "";
+            e.Row.Cells[4].Value = "";
+        }
+
+        private void courseTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // update
+        }
+
+        private void studentTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            // update
         }
     }
 }
