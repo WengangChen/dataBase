@@ -15,7 +15,13 @@ namespace WindowsFormsApplication5
         System.Data.SqlClient.SqlConnection connection;
         public SqlOperator()
         {
-            string connectionString = @"server=DESKTOP-1TVQMNU\SQLEXPRESS;database=DataBase;uid=admin;pwd=12345678";
+            SqlConnectionStringBuilder cstr = new SqlConnectionStringBuilder();
+            cstr.DataSource = "10.30.13.10,18188";
+            cstr.InitialCatalog = "DataBase";
+            cstr.UserID = "amdin";
+            cstr.Password = "12345678";
+            cstr.NetworkLibrary = "DBMSSOCN";
+            string connectionString = cstr.ToString();
             connection = new SqlConnection(connectionString);
             try
             {
