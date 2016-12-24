@@ -13,12 +13,12 @@ namespace WindowsFormsApplication5
     public partial class AddStudentForm : Form
     {
         ShowForm showMainFrom = null;
-        准备添加的学生 addStudentList;
+        ReadyToAddStu addStudentList;
         public AddStudentForm(ShowForm showFromFunction)
         {
             InitializeComponent();
             showMainFrom = showFromFunction;
-            addStudentList = new WindowsFormsApplication5.准备添加的学生();
+            addStudentList = new WindowsFormsApplication5.ReadyToAddStu();
             addStudentList.Show();
         }
 
@@ -31,8 +31,10 @@ namespace WindowsFormsApplication5
         private void Enter_Click(object sender, EventArgs e)
         {
             addStudentList.addStudent(studentNo.Text, studentName.Text, major.Text, studentClass.Text);
-            SqlOperator conn=new WindowsFormsApplication5.SqlOperator ();
-            conn.addStudent(studentNo.Text, studentName.Text, studentClass.Text, major.Text);
+            using (SqlOperator conn = new SqlOperator())
+            {
+                conn.addStudent(studentNo.Text, studentName.Text, studentClass.Text, major.Text);
+            }
         }
     }
 }

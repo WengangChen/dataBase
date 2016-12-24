@@ -11,9 +11,9 @@ using System.Windows.Forms;
 namespace WindowsFormsApplication5
 {
     
-    public partial class 准备添加的学生 : Form
+    public partial class ReadyToAddStu : Form
     {
-        public 准备添加的学生()
+        public ReadyToAddStu()
         {
             InitializeComponent();
         }
@@ -39,8 +39,10 @@ namespace WindowsFormsApplication5
                 var tmp = addStudentFormView.SelectedItems[0];
                 string studentNumber = tmp.SubItems[1].Text;
                 addStudentFormView.Items.Remove(addStudentFormView.SelectedItems[0]);
-                SqlOperator conn = new WindowsFormsApplication5.SqlOperator();
-                conn.removeStudent(studentNumber);
+                using (SqlOperator conn = new SqlOperator())
+                {
+                    conn.removeStudent(studentNumber);
+                }
             }
         }
     }

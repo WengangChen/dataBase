@@ -10,15 +10,16 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication5
 {
-    public class SqlOperator
+    public class SqlOperator : IDisposable
     {
-        System.Data.SqlClient.SqlConnection connection;
+        private SqlConnection connection;
+
         public SqlOperator()
         {
             SqlConnectionStringBuilder cstr = new SqlConnectionStringBuilder();
             cstr.DataSource = "10.30.13.10,18188";
             cstr.InitialCatalog = "DataBase";
-            cstr.UserID = "amdin";
+            cstr.UserID = "admin";
             cstr.Password = "12345678";
             cstr.NetworkLibrary = "DBMSSOCN";
             string connectionString = cstr.ToString();
@@ -32,18 +33,7 @@ namespace WindowsFormsApplication5
                 MessageBox.Show(e.Message);
             }
         }
-        ~SqlOperator()
-        {
-            try
-            {
-                connection.Close();
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
-        // private IPAddress addr;
+
         public void addStudent(string number, string name, string studentClass, string major)
         {
             try
@@ -58,6 +48,7 @@ namespace WindowsFormsApplication5
                 MessageBox.Show(e.Message);
             }
         }
+
         public void removeStudent(string number)
         {
             try
@@ -72,6 +63,7 @@ namespace WindowsFormsApplication5
                 MessageBox.Show(e.Message);
             }
         }
+
         public void addCourse(int courseNumber, string name, string teacherName, double b, bool canResit = false)
         {
             try
@@ -87,6 +79,7 @@ namespace WindowsFormsApplication5
             }
 
         }
+
         public void removeCourse(int courseNumber)
         {
             try
@@ -101,6 +94,7 @@ namespace WindowsFormsApplication5
                 MessageBox.Show(e.Message);
             }
         }
+
         public void studentChooseCourse(string studentId, int courseId)
         {
             string x = SqlCombine.studentChooseCourse(studentId, courseId);
@@ -108,6 +102,7 @@ namespace WindowsFormsApplication5
             p.Connection = connection;
             p.ExecuteReader();
         }
+
         public void SetGrade(string studentID, int courseId, double pingshi, double qimo)
         {
             try
@@ -119,7 +114,7 @@ namespace WindowsFormsApplication5
                 SqlDataReader result = p.ExecuteReader();
                 if (!result.HasRows)
                     throw new Exception("找不到该课程");
-                double b=result.GetDouble(0);
+                double b = result.GetDouble(0);
                 string x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b);
                 p.CommandText = x;
                 p.Connection = connection;
@@ -130,6 +125,18 @@ namespace WindowsFormsApplication5
                 MessageBox.Show(e.Message);
             }
 
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }
