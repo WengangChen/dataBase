@@ -43,7 +43,7 @@ namespace WindowsFormsApplication5.Helper
         }
         public static string getBi(int courseId)
         {
-            return "select 期末成绩占总成绩比 from 课程信息表 where (课程号= " + Convert.ToString(courseId) + ")";
+            return "select 期末成绩占总成绩比,学分 from 课程信息表 where (课程号= " + Convert.ToString(courseId) + ")";
         }
         public static string getGreatStudent()
         {

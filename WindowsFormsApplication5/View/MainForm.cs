@@ -172,5 +172,10 @@ namespace WindowsFormsApplication5.View
             form1.Show();
             form1.showData();
         }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
