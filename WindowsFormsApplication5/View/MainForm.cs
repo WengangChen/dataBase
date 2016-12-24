@@ -110,11 +110,59 @@ namespace WindowsFormsApplication5.View
         private void courseTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // update
+            for(int i=0;i<courseTable.ColumnCount;i++)
+            {
+                if (Convert.ToString(courseTable.Rows[e.RowIndex].Cells[i].Value) == "")
+                    return;
+            }
+            var r = e.RowIndex;
+            sql.addCourse(Convert.ToInt32(courseTable.Rows[r].Cells[0].Value),
+                Convert.ToString(courseTable.Rows[r].Cells[1].Value),
+                Convert.ToString(courseTable.Rows[r].Cells[2].Value),
+                Convert.ToDouble(courseTable.Rows[r].Cells[3].Value),
+                Convert.ToBoolean(courseTable.Rows[r].Cells[4].Value),
+                Convert.ToDouble(courseTable.Rows[r].Cells[5].Value));
+            
         }
 
         private void studentTable_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             // update
+            for (int i = 0; i < studentTable.ColumnCount-1; i++)
+            {
+                if (Convert.ToString(studentTable.Rows[e.RowIndex].Cells[i].Value) == "")
+                    return;
+            }
+            var r = e.RowIndex;
+            sql.addStudent(Convert.ToString(studentTable.Rows[r].Cells[0].Value),
+                Convert.ToString(studentTable.Rows[r].Cells[1].Value),
+                Convert.ToString(studentTable.Rows[r].Cells[3].Value),
+                Convert.ToString(studentTable.Rows[r].Cells[2].Value));
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 要补考的ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 评优的ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            评优的 form1 = new 评优的();
+            form1.Show();
+            form1.showData();
+        }
+
+        private void 选课ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            选课 form1 = new 选课();
+            form1.Show();
+            form1.showData();
+            
         }
     }
 }

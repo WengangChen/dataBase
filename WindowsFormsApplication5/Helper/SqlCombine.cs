@@ -19,10 +19,10 @@ namespace WindowsFormsApplication5.Helper
         {
             return "delete form 学生信息表 where (" + "学号='" + number + "')";
         }
-        public static string addCourse(int courseNumber, string name, string teacherName, double b, bool canResit = false)
+        public static string addCourse(int courseNumber, string name, string teacherName, double b, bool canResit,double xuefen)
         {
-            return "insert into 课程信息表 (课程号,课程名字,任课老师,期末成绩占总成绩比,允许补考) values("
-                + Convert.ToString(courseNumber) + ",'" + name + "','" + teacherName + "','" + Convert.ToString(b) + (canResit ? "1" : "0");
+            return "insert into 课程信息表 (课程号,课程名字,任课老师,期末成绩占总成绩比,允许补考,学分) values("
+                + Convert.ToString(courseNumber) + ",'" + name + "','" + teacherName + "'," + Convert.ToString(b) +","+ (canResit ? "1" : "0")+","+Convert.ToString(xuefen)+")";
         }
         public static string removeCourse(int courseNumber)
         {
@@ -41,6 +41,11 @@ namespace WindowsFormsApplication5.Helper
         public static string getBi(int courseId)
         {
             return "select 期末成绩占总成绩比 from 课程信息表 where (课程号= " + Convert.ToString(courseId) + ")";
+        }
+        public static string getGreatStudent()
+        {
+            string x = "select (学号,姓名，班级) from 学生信息表 where 学号 not in(select 学号 from 选课成绩表 where 成绩类型 !='" + "普通" + "or 成绩<=" + Convert.ToString(85) + "); ";
+            return x;
         }
     }
 }

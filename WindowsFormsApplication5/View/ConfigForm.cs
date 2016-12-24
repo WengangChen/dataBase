@@ -22,7 +22,13 @@ namespace WindowsFormsApplication5.View
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Config.Server = textBox1.Text;
+            this.Close();
         }
     }
 }
