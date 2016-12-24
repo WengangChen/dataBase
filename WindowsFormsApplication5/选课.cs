@@ -39,14 +39,15 @@ namespace WindowsFormsApplication5
 
                 view.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
-            catch (SqlException)
+            catch (SqlException e)
             {
+                MessageBox.Show(e.Message);
             }
         }
 
         public void showData()
         {
-            GetData(dataGridView1, bs, "select (学号,课程号) from 选课信息表");
+            GetData(dataGridView1, bs, "select 学号,课程号 from 选课信息表");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
