@@ -14,15 +14,33 @@ namespace databaseSever
         System.Data.SqlClient.SqlConnection connection;
         public DataBaseSql()
         {
+
             //Data Source = localhost; Initial Catalog = 数据库名; User ID = 用户名; Password = 密码
-            string connectString = "Data Source=localHost;Initial Catalog=DataBase;User ID = admin;password = 0";
-            connection = new SqlConnection(connectString);
-            connection.Open();
+            string connectionString = @"server=DESKTOP-1TVQMNU\SQLEXPRESS;database=DataBase;uid=admin;pwd=12345678";
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
-        public void run(string s)
+        //需要返回表的指令
+        public SqlDataReader runS(string s)
         {
             SqlCommand sqlCommand = new SqlCommand(s);
-            sqlCommand.ExecuteNonQuery();
+            sqlCommand.Connection = connection;
+            return sqlCommand.ExecuteReader();
+        }
+
+        //不需要返回表的指令
+        public void runO(string s)
+        {
+            SqlCommand sqlCommand = new SqlCommand(s);
+            sqlCommand.Connection = connection;
+            sqlCommand.ExecuteReader();
         }
          ~DataBaseSql ()
         {
