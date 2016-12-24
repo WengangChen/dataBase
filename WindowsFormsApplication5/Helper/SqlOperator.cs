@@ -8,25 +8,25 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace WindowsFormsApplication5
+namespace WindowsFormsApplication5.Helper
 {
     public class SqlOperator : IDisposable
     {
-        private SqlConnection connection;
-
+        public SqlConnection Connection { private set; get; }
+        
         public SqlOperator()
         {
             SqlConnectionStringBuilder cstr = new SqlConnectionStringBuilder();
-            cstr.DataSource = "10.30.13.10,18188";
+            cstr.DataSource = Config.Server;
             cstr.InitialCatalog = "DataBase";
             cstr.UserID = "admin";
             cstr.Password = "12345678";
             cstr.NetworkLibrary = "DBMSSOCN";
             string connectionString = cstr.ToString();
-            connection = new SqlConnection(connectionString);
+            Connection = new SqlConnection(connectionString);
             try
             {
-                connection.Open();
+                Connection.Open();
             }
             catch (Exception e)
             {
@@ -40,8 +40,8 @@ namespace WindowsFormsApplication5
             {
                 string x = SqlCombine.addStudent(number, name, studentClass, major);
                 SqlCommand p = new SqlCommand(x);
-                p.Connection = connection;
-                p.ExecuteReader();
+                p.Connection = Connection;
+                p.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -55,8 +55,8 @@ namespace WindowsFormsApplication5
             {
                 string x = SqlCombine.removeStudent(number);
                 SqlCommand p = new SqlCommand(x);
-                p.Connection = connection;
-                p.ExecuteReader();
+                p.Connection = Connection;
+                p.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -70,8 +70,8 @@ namespace WindowsFormsApplication5
             {
                 string x = SqlCombine.addCourse(courseNumber, name, teacherName, b, canResit);
                 SqlCommand p = new SqlCommand(x);
-                p.Connection = connection;
-                p.ExecuteReader();
+                p.Connection = Connection;
+                p.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -85,8 +85,8 @@ namespace WindowsFormsApplication5
             {
                 string x = SqlCombine.removeCourse(courseNumber);
                 SqlCommand p = new SqlCommand(x);
-                p.Connection = connection;
-                p.ExecuteReader();
+                p.Connection = Connection;
+                p.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -98,8 +98,8 @@ namespace WindowsFormsApplication5
         {
             string x = SqlCombine.studentChooseCourse(studentId, courseId);
             SqlCommand p = new SqlCommand(x);
-            p.Connection = connection;
-            p.ExecuteReader();
+            p.Connection = Connection;
+            p.ExecuteNonQuery();
         }
 
         public void SetGrade(string studentID, int courseId, double pingshi, double qimo)
@@ -108,15 +108,15 @@ namespace WindowsFormsApplication5
             {
                 string selc = SqlCombine.getBi(courseId);
                 SqlCommand p = new SqlCommand(selc);
-                p.Connection = connection;
+                p.Connection = Connection;
                 SqlDataReader result = p.ExecuteReader();
                 if (!result.HasRows)
                     throw new Exception("找不到该课程");
                 double b = result.GetDouble(0);
                 string x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b);
                 p.CommandText = x;
-                p.Connection = connection;
-                p.ExecuteReader();
+                p.Connection = Connection;
+                p.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -129,7 +129,7 @@ namespace WindowsFormsApplication5
         {
             try
             {
-                connection.Close();
+                Connection.Close();
             }
             catch (Exception e)
             {
