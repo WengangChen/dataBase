@@ -77,7 +77,6 @@ namespace WindowsFormsApplication5
             {
                 MessageBox.Show(e.Message);
             }
-
         }
 
         public void removeCourse(int courseNumber)
@@ -107,7 +106,6 @@ namespace WindowsFormsApplication5
         {
             try
             {
-
                 string selc = SqlCombine.getBi(courseId);
                 SqlCommand p = new SqlCommand(selc);
                 p.Connection = connection;
