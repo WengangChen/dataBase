@@ -39,7 +39,7 @@ namespace WindowsFormsApplication5
 
                 view.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
-            catch (SqlException)
+            catch (SqlException es)
             {
             }
         }

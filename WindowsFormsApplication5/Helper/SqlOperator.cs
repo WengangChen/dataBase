@@ -120,7 +120,16 @@ namespace WindowsFormsApplication5.Helper
                 if (!result.HasRows)
                     throw new Exception("找不到该课程");
                 double b = result.GetDouble(0);
-                string x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b);
+                //课程的学分
+                double y = result.GetFloat(1);
+                string x = "select 总评 from 选课信息表 where (学号='" + studentID + "'and 课程号=" + Convert.ToString(courseId) + ");";
+                p.CommandText = x;
+                result = p.ExecuteReader();
+                if(result.GetFloat(0)<60&&pingshi*(1-b)+qimo*(b)>=60)
+                {
+                  
+                }
+                x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b);
                 p.CommandText = x;
                 p.Connection = Connection;
                 p.ExecuteNonQuery();
@@ -133,7 +142,7 @@ namespace WindowsFormsApplication5.Helper
         }
         public DataSet getGreatStudent()
         {
-            string x = "select (学号,姓名，班级) from 学生信息表 where 学号 not in(select 学号 from 选课成绩表 where 成绩类型 !='" + "普通" + "or 成绩<=" + Convert.ToString(85) + "); ";
+            string x = SqlCombine.getGreatStudent();
             DataSet xx = new DataSet();
             SqlDataAdapter p = new SqlDataAdapter(x, Connection);
             p.Fill(xx);
