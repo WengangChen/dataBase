@@ -49,7 +49,9 @@ namespace WindowsFormsApplication5.View
             try
             {
                 int id = int.Parse(toolStripTextBox1.Text);
+                //comboBox1.Visible = false;
                 GetData(dataGridView1, bindingSource, SqlCombine.getStudentNum(id));
+                
             }
             catch (Exception)
             {

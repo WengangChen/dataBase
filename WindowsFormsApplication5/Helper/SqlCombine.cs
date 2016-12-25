@@ -85,7 +85,7 @@ namespace WindowsFormsApplication5.Helper
         //获取选该课的人
         public static string getStudentNum(int courseNumber)
         {
-            return $"select 学号,平时成绩,期末成绩 from 选课成绩表 where 课程号={courseNumber};";
+            return $"select 学号,平时成绩,期末成绩,成绩类型 from 选课成绩表 where 课程号={courseNumber};";
         }
     }
 }
