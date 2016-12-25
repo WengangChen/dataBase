@@ -14,7 +14,7 @@ namespace WindowsFormsApplication5.Helper
     public class SqlOperator : IDisposable
     {
         public SqlConnection Connection { private set; get; }
-        
+
         public SqlOperator()
         {
             SqlConnectionStringBuilder cstr = new SqlConnectionStringBuilder();
@@ -65,11 +65,11 @@ namespace WindowsFormsApplication5.Helper
             }
         }
 
-        public void addCourse(int courseNumber, string name, string teacherName, double b, bool canResit,double xuefen)
+        public void addCourse(int courseNumber, string name, string teacherName, double b, bool canResit, double xuefen)
         {
             try
             {
-                string x = SqlCombine.addCourse(courseNumber, name, teacherName, b, canResit,xuefen);
+                string x = SqlCombine.addCourse(courseNumber, name, teacherName, b, canResit, xuefen);
                 SqlCommand p = new SqlCommand(x);
                 p.Connection = Connection;
                 p.ExecuteNonQuery();
@@ -103,13 +103,14 @@ namespace WindowsFormsApplication5.Helper
                 SqlCommand p = new SqlCommand(x);
                 p.Connection = Connection;
                 p.ExecuteNonQuery();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
         }
 
-        public void SetGrade(string studentID, int courseId, double pingshi, double qimo,string type)
+        public void SetGrade(string studentID, int courseId, double pingshi, double qimo, string type)
         {
             try
             {
@@ -119,21 +120,27 @@ namespace WindowsFormsApplication5.Helper
                 SqlDataReader result = p.ExecuteReader();
                 if (!result.HasRows)
                     throw new Exception("找不到该课程");
+                result.Read();
                 double b = result.GetDouble(0);
                 //课程的学分
-                double y = result.GetFloat(1);
+                double y = result.GetDouble(1);
                 string x = "select 总评 from 选课成绩表 where (学号='" + studentID + "'and 课程号=" + Convert.ToString(courseId) + ");";
                 p.CommandText = x;
+                result.Close();
                 result = p.ExecuteReader();
-                if(result.GetFloat(0)<60&&pingshi*(1-b)+qimo*(b)>=60)
+                result.Read();
+                if (result.GetDouble(0) < 60 && pingshi * (1 - b) + qimo * (b) >= 60)
                 {
                     x = "select 学分 from 学生信息表 where 学号='" + studentID + "';";
                     p.CommandText = x;
+                    result.Close();
                     result = p.ExecuteReader();
+                    result.Read();
                     double z = result.GetFloat(0) + y;
-                    x="update 学生信息表 set 学分 = "+Convert.ToString(z)+ " where 学号='" + studentID + "';";
+                    x = "update 学生信息表 set 学分 = " + Convert.ToString(z) + " where 学号='" + studentID + "';";
                 }
-                x = SqlCombine.ModefyGrade(studentID, courseId, pingshi, qimo, b,type);
+                result.Close();
+                x = SqlCombine.ModifyGrade(studentID, courseId, pingshi, qimo, b, type);
                 p.CommandText = x;
                 p.Connection = Connection;
                 p.ExecuteNonQuery();
@@ -152,7 +159,7 @@ namespace WindowsFormsApplication5.Helper
             p.Fill(xx);
             return xx;
         }
-        
+
         public void Dispose()
         {
             try

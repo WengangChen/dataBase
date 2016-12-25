@@ -173,9 +173,10 @@ namespace WindowsFormsApplication5.View
             form1.showData();
         }
 
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void 登记成绩ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            GradeForm form = new GradeForm();
+            form.Show();
         }
     }
 }

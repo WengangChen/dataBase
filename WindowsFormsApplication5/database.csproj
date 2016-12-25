@@ -52,6 +52,12 @@
     <Compile Include="View\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\GradeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GradeForm.Designer.cs">
+      <DependentUpon>GradeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="View\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GradeForm.resx">
+      <DependentUpon>GradeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
