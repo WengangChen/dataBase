@@ -71,14 +71,14 @@ namespace WindowsFormsApplication5.View
                     qm = 0;
                 else
                     qm = (double)dataGridView1.Rows[e.RowIndex].Cells[2].Value;
-                string ty = dataGridView1.Rows[e.RowIndex].Cells[3].Value as string;
-                if (ty == null)
-                    ty = "";
+                string ty = comboBox1.Text;
+                
+
                 sql.SetGrade(sid, cid, ps, qm, ty);
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
     }

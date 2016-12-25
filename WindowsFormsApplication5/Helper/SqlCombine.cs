@@ -54,9 +54,9 @@ namespace WindowsFormsApplication5.Helper
         public static string getResitCourse()
         {
             string x = "select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
-            string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";
+            string y = "select 学号,课程号  into #b from 选课成绩表 except select * from #a ;" + "\n";
             string z = "select 学号, 课程号 into #c from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=1);" + "\n";
-            string xx = "select #c.学号,学生信息表.姓名,#c.课程号 into #d from #c left join 学生信息表 on #c.学号=学生信息表.学号;\n";
+            string xx = "select #c.学号,学生信息表.姓名,#c.课程号 into #d from #c left join 学生信息表  on #c.学号=学生信息表.学号;\n";
             string yy = "select #d.学号,#d.姓名,#d.课程号,课程信息表.课程名字 from #d left join 课程信息表 on #d.课程号=课程信息表.课程号;";
             return x + y + z + xx + yy;
         }
@@ -64,8 +64,8 @@ namespace WindowsFormsApplication5.Helper
         public static string getCantResitCourse()
         {
             string x = "select 学号, 课程号 into #a from 选课成绩表 where 总评>=60;" + "\n";
-            string y = "select 选课成绩表.学号,选课成绩表.课程号 into #b from 选课成绩表,#a where not (选课成绩表.学号=#a.学号 and 选课成绩表.课程号=#a.课程号);" + "\n";
-            string z = "select 学号, 课程号 from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=0);" + "\n";
+            string y = "select 学号,课程号  into #b from 选课成绩表 except select * from #a;" + "\n";
+            string z = "select 学号, 课程号 into #c from #b where 课程号 in (select 课程号 from 课程信息表 where 允许补考=0);" + "\n";
             string xx = "select #c.学号,学生信息表.姓名,#c.课程号 into #d from #c left join 学生信息表 on #c.学号=学生信息表.学号;\n";
             string yy = "select #d.学号,#d.姓名,#d.课程号,课程信息表.课程名字 from #d left join 课程信息表 on #d.课程号=课程信息表.课程号;";
             return x + y + z + xx + yy;
@@ -85,7 +85,7 @@ namespace WindowsFormsApplication5.Helper
         //获取选该课的人
         public static string getStudentNum(int courseNumber)
         {
-            return $"select 学号,平时成绩,期末成绩,成绩类型 from 选课成绩表 where 课程号={courseNumber};";
+            return $"select 学号,平时成绩,期末成绩 from 选课成绩表 where 课程号={courseNumber};";
         }
     }
 }

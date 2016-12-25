@@ -178,5 +178,10 @@ namespace WindowsFormsApplication5.View
             GradeForm form = new GradeForm();
             form.Show();
         }
+
+        private void courseTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

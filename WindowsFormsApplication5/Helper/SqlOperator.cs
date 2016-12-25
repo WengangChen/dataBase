@@ -136,14 +136,17 @@ namespace WindowsFormsApplication5.Helper
                     result.Close();
                     result = p.ExecuteReader();
                     result.Read();
-                    double z = result.GetFloat(0) + y;
+                    double z = result.GetDouble(0) + y;
+                    result.Close();
                     x = "update 学生信息表 set 学分 = " + Convert.ToString(z) + " where 学号='" + studentID + "';";
+                    p.CommandText = x;
+                    p.ExecuteReader().Close();
                 }
                 result.Close();
                 x = SqlCombine.ModifyGrade(studentID, courseId, pingshi, qimo, b, type);
                 p.CommandText = x;
                 p.Connection = Connection;
-                p.ExecuteNonQuery();
+                p.ExecuteReader().Close();
             }
             catch (Exception e)
             {
