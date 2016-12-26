@@ -10,7 +10,7 @@ namespace WindowsFormsApplication5.Helper
     {
         static Config()
         {
-            Server = "10.30.13.10,18188";
+            Server = "127.0.0.1,18188";
         }
 
         public static string Server { set; get; }
